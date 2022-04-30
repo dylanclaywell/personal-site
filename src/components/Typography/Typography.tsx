@@ -2,12 +2,28 @@ import classnames from 'classnames'
 import React from 'react'
 
 type Component = 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'li'
+type NeonLevel = '1' | '2' | '3' | '4'
+
+interface NestedProps {
+  className?: string
+  'data-before'?: string
+  style?:
+    | {
+        '--neon-color-override': string
+      }
+    | {
+        color: string
+      }
+}
 
 interface Props {
   className?: string
   component?: Component
   children: string
   isNeon?: boolean
+  /** `color` should be a CSS color value. If `isNeon` is `true`, this will instead affect only the glow behind the white text. */
+  color?: string
+  neonLevel?: NeonLevel
 }
 
 function getTypographyComponent({
@@ -15,18 +31,26 @@ function getTypographyComponent({
   text,
   className,
   isNeon,
+  color,
+  neonLevel,
 }: {
   component: Component | undefined
   text: string
   className: string | undefined
   isNeon: boolean | undefined
+  color: string | undefined
+  neonLevel: NeonLevel | undefined
 }) {
-  const props = {
+  const props: NestedProps = {
     className,
     ...(isNeon && {
       'data-before': text,
-      className: classnames(className, 'neon'),
+      className: classnames(className, 'neon', `neon--level-${neonLevel}`),
     }),
+    ...(color &&
+      (isNeon
+        ? { style: { '--neon-color-override': color } }
+        : { style: { color: color } })),
   }
 
   switch (component) {
@@ -56,11 +80,15 @@ export default function Typography({
   component,
   className,
   isNeon,
+  color,
+  neonLevel = '1',
 }: Props) {
   return getTypographyComponent({
     component,
     text: children,
     className,
     isNeon,
+    color,
+    neonLevel,
   })
 }
