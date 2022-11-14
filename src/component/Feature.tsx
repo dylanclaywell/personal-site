@@ -21,7 +21,10 @@ export default function Feature({ id, title, paragraphs, imageUrl }: Props) {
           </p>
         ))}
       </div>
-      <img className="basis-1/2 w-1/2 object-contain" src={imageUrl} />
+      <img
+        className="basis-1/2 w-full md:w-1/2 object-contain"
+        src={imageUrl}
+      />
     </section>
   )
 }
