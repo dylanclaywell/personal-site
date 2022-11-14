@@ -3,17 +3,38 @@
 @tailwind utilities;
 
 :root {
-  --default-neon-color: var(--neon-pink);
+}
+
+@font-face {
+  font-family: Quicksand;
+  src: url(assets/Quicksand-Medium.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Quicksand;
+  src: url(assets/Quicksand-Bold.ttf);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Quicksand;
+  src: url(assets/Quicksand-Light.ttf);
+  font-weight: lighter;
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url(assets/Poppins-Regular.ttf);
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Quicksand, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(180deg, black 0%, #20001d 30%, #590050 100%);
   background-repeat: no-repeat;
   height: 100vh;
 }
@@ -22,39 +43,4 @@ body {
 *::after,
 *::before {
   box-sizing: border-box;
-}
-
-.neon {
-  --neon-color: var(--neon-color-override, var(--default-neon-color));
-  --neon-text-shadow: 0px 0px 16px var(--neon-color);
-  @apply before:text-white before:content-[attr(data-before)] before:absolute;
-}
-
-.neon--level-1 {
-  text-shadow: var(--neon-text-shadow);
-}
-
-.neon--level-2 {
-  text-shadow: var(--neon-text-shadow), var(--neon-text-shadow);
-}
-
-.neon--level-2:hover {
-  text-shadow: var(--neon-text-shadow), var(--neon-text-shadow),
-    var(--neon-text-shadow);
-}
-
-.neon--level-3 {
-  text-shadow: var(--neon-text-shadow), var(--neon-text-shadow),
-    var(--neon-text-shadow);
-}
-
-.neon--level-4 {
-  text-shadow: var(--neon-text-shadow), var(--neon-text-shadow),
-    var(--neon-text-shadow), var(--neon-text-shadow);
-}
-
-.neon--level-4:hover {
-  text-shadow: var(--neon-text-shadow), var(--neon-text-shadow),
-    var(--neon-text-shadow), var(--neon-text-shadow), var(--neon-text-shadow),
-    var(--neon-text-shadow);
 }
