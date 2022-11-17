@@ -21,16 +21,19 @@ function App() {
         <nav className="flex grow justify-center space-x-8"></nav>
       </header>
       <main>
-        <div className="text-center h-screen flex flex-col justify-center">
-          <h1 className="text-[10vw]">Howdy! 👋</h1>
-          <p className="font-[Poppins]">
+        <div className="text-center h-screen flex flex-col justify-center items-center">
+          <h1 className="text-[10vw] w-fit space-x-8">
+            <span className="slidein inline-block font-lighter">Howdy</span>
+            <span>👋</span>
+          </h1>
+          <p className="font-[Poppins] w-fit">
             My name is <a href="#about-me">Dylan Claywell</a>
           </p>
         </div>
         <Feature
           id="about-me"
           title="Who am I?"
-          imageUrl="https://via.placeholder.com/500"
+          imageUrl="me.svg"
           paragraphs={[
             `I'm a software engineer by trade, and a creator by passion. I
             love making something new with my own two hands, from games to web
