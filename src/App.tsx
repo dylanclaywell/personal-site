@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
+import { RouterProvider } from 'react-router-dom'
 
 import colors from './colors'
-import Feature from './component/Feature'
+import router from './router'
 
-function App() {
-  // Set all color variables from the shared colors file
-  useEffect(() => {
+export default function App() {
+  useEffect(function initializeColorVariables() {
     for (const colorName of Object.keys(colors)) {
       const colorKey = colorName as keyof typeof colors
       document.documentElement.style.setProperty(
@@ -15,47 +15,5 @@ function App() {
     }
   }, [])
 
-  return (
-    <>
-      <header className="flex items-center flex-wrap">
-        <nav className="flex grow justify-center space-x-8"></nav>
-      </header>
-      <main>
-        <div className="text-center h-screen flex flex-col justify-center items-center">
-          <h1 className="text-[10vw] w-fit space-x-8">
-            <span className="slidein inline-block font-lighter">Howdy</span>
-            <span>👋</span>
-          </h1>
-          <p className="font-[Poppins] w-fit">
-            My name is <a href="#about-me">Dylan Claywell</a>
-          </p>
-        </div>
-        <Feature
-          id="about-me"
-          title="Who am I?"
-          imageUrl="me.svg"
-          paragraphs={[
-            `I'm a software engineer by trade, and a creator by passion. I
-            love making something new with my own two hands, from games to web
-            applications.`,
-            `I love React and Typescript, and I'm passionate about making
-            interfaces that are easy to use and look great in the process.`,
-          ]}
-        />
-        <Feature
-          id="my-work"
-          title="What am I working on?"
-          imageUrl="https://via.placeholder.com/500"
-          paragraphs={[
-            `This website is written in React 18 and Typescript, and is
-             styled using Tailwind CSS. It's hosted on Google Cloud Platform
-             using App Engine.
-            `,
-          ]}
-        />
-      </main>
-    </>
-  )
+  return <RouterProvider router={router} />
 }
-
-export default App

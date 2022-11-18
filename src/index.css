@@ -50,12 +50,23 @@ a:hover {
   color: var(--light-blue);
 }
 
-.slidein {
-  animation-name: slidein;
+.slidein-left {
+  animation-name: slidein-left;
   animation-duration: 300ms;
 }
 
-@keyframes slidein {
+.slidein-right {
+  animation-name: slidein-right;
+  animation-duration: 300ms;
+}
+
+.wave {
+  animation-name: wave;
+  animation-duration: 200ms;
+  animation-iteration-count: 2;
+}
+
+@keyframes slidein-right {
   0% {
     opacity: 0;
     transform: translateX(25%);
@@ -68,5 +79,35 @@ a:hover {
   100% {
     opacity: 1;
     transform: translateX(0%);
+  }
+}
+
+@keyframes slidein-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-25%);
+  }
+
+  50% {
+    opacity: 0.25;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(20deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
   }
 }
