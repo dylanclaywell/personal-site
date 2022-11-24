@@ -1,33 +1,49 @@
-import React, { useEffect, useState } from 'react'
-import IconButton from '../component/IconButton'
+import React, { useEffect, useState, useContext } from 'react'
 
+import NavigationMenu from '../component/NavigationMenu'
+import { ModalContext } from '../contexts/ModalContext'
 import { randomGreeting } from '../greetings'
 
 export default function Home() {
+  const [, dispatch] = useContext(ModalContext)
   const [greeting, setGreeting] = useState('')
 
   useEffect(function generateGreeting() {
     setGreeting(randomGreeting())
+
+    const interval = setInterval(() => {
+      setGreeting(randomGreeting())
+    }, 2000)
+
+    return function cleanup() {
+      clearInterval(interval)
+    }
   }, [])
 
   return (
-    <>
-      <header className="flex items-center flex-wrap">
-        <nav className="flex grow justify-center space-x-8"></nav>
-      </header>
-      <main>
-        <div className="text-center h-screen flex flex-col justify-center items-center">
-          <h1 className="text-[10vw] w-fit space-x-[2vw]">
-            <span className="slidein-right inline-block font-lighter">
-              {greeting}
-            </span>
-            <span className="wave inline-block before:pt-[100%]">👋</span>
-          </h1>
-          <p className="font-[Poppins] w-fit">
-            My name is <a href="#about-me">Dylan Claywell</a>
-          </p>
-        </div>
-      </main>
-    </>
+    <main className="bg-blue">
+      <div className="text-center h-screen flex flex-col justify-center items-center">
+        <h1 className="text-[10vw] w-fit space-x-[2vw]">
+          <span
+            key={greeting}
+            className="slidein-right inline-block font-lighter"
+          >
+            {greeting}
+          </span>
+          <span className="wave inline-block before:pt-[100%]">👋</span>
+        </h1>
+        <p className="font-[Poppins] w-fit">
+          My name is{' '}
+          <button
+            className="text-blue hover:text-light-blue"
+            onClick={() =>
+              dispatch({ type: 'open', content: <NavigationMenu /> })
+            }
+          >
+            Dylan Claywell
+          </button>
+        </p>
+      </div>
+    </main>
   )
 }

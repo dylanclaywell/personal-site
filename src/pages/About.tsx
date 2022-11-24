@@ -4,7 +4,7 @@ import Feature from '../component/Feature'
 
 export default function About() {
   return (
-    <main>
+    <main className="overflow-x-hidden bg-red-300">
       <Feature
         title="Who am I?"
         imageUrl="me.svg"
