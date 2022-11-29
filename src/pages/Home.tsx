@@ -21,7 +21,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="bg-blue">
+    <main>
       <div className="text-center h-screen flex flex-col justify-center items-center">
         <h1 className="text-[10vw] w-fit space-x-[2vw]">
           <span

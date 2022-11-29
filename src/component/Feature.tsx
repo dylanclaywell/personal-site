@@ -25,8 +25,8 @@ export default function Feature({
     >
       <div
         className={classnames('space-y-4 basis-1/2', {
-          // 'slidein-left': orientation === 'textLeft',
-          // 'slidein-right': orientation === 'textRight',
+          'slidein-left': orientation === 'textLeft',
+          'slidein-right': orientation === 'textRight',
         })}
       >
         <h2 className="text-2xl font-bold">{title}</h2>
@@ -38,8 +38,8 @@ export default function Feature({
       </div>
       <img
         className={classnames('basis-1/2 w-full md:w-1/2 object-contain', {
-          // 'slidein-right': orientation === 'textLeft',
-          // 'slidein-left': orientation === 'textRight',
+          'slidein-right': orientation === 'textLeft',
+          'slidein-left': orientation === 'textRight',
         })}
         src={imageUrl}
       />
