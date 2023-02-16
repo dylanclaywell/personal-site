@@ -1,18 +1,19 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 
-import { ModalContext } from '../contexts/ModalContext'
+import IconLink from './IconLink'
+import { useEscapeKey } from '../hooks/useEscapeKey'
 
 export interface Props {
   isOpen: boolean
-  children: React.ReactNode
+  onClose: () => void
 }
 
 export default function FullscreenModal({
   isOpen,
-  children,
+  onClose,
 }: Props): JSX.Element {
-  const [, dispatch] = useContext(ModalContext)
+  useEscapeKey(onClose)
 
   return (
     <div
@@ -21,15 +22,25 @@ export default function FullscreenModal({
       })}
     >
       <div
-        className={classnames(
-          'absolute w-full h-full bg-gray-800 opacity-30 transition-all',
-          {
-            'opacity-0': !isOpen,
-          }
-        )}
-        onClick={() => dispatch({ type: 'close' })}
+        className={classnames('absolute w-full h-full', {
+          'opacity-0': !isOpen,
+        })}
+        onClick={onClose}
       />
-      {isOpen && <div className="absolute">{children}</div>}
+      <div className="absolute overflow-hidden" onClick={onClose}>
+        <div
+          className={classnames(
+            'h-[calc(100vh_-_4rem)] justify-between flex flex-col m-8 transition-all',
+            {
+              'scale-125': !isOpen,
+              'scale-100': isOpen,
+            }
+          )}
+        >
+          <IconLink name="face" label="About Me" url="/about-me" />
+          <IconLink name="work" label="Work" url="/my-work" />
+        </div>
+      </div>
     </div>
   )
 }

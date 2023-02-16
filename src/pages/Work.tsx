@@ -9,19 +9,21 @@ export default function Work() {
         orientation="textRight"
         title="What am I working on?"
         imageUrl="https://via.placeholder.com/500"
-        paragraphs={[
-          `This website is written in React 18 and Typescript, and is
-             styled using Tailwind CSS. It's hosted on Google Cloud Platform
-             using App Engine.
-            `,
-          `I've also been working with Solid JS, a library with inspiration
-             from React and Preact, and and Tauri to make desktop applications.
-            `,
-          `In my spare time I've been working on a game using Tauri and Phaser,
-             so stay tuned!
-            `,
-        ]}
-      />
+      >
+        <p>
+          This website is written in React 18 and Typescript, and is styled
+          using Tailwind CSS. It&apos;s hosted on Google Cloud Platform using
+          App Engine.
+        </p>
+        <p>
+          I&apos;ve also been working with Solid JS, a library with inspiration
+          from React and Preact, and Tauri to make desktop applications.
+        </p>
+        <p>
+          In my spare time I&apos;ve been working on a game using Tauri and
+          Phaser, so stay tuned!
+        </p>
+      </Feature>
     </main>
   )
 }

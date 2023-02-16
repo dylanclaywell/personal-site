@@ -3,16 +3,16 @@ import classnames from 'classnames'
 
 interface Props {
   title: string
-  paragraphs: string[]
   imageUrl: string
   orientation?: 'textLeft' | 'textRight'
+  children: React.ReactNode
 }
 
 export default function Feature({
   title,
-  paragraphs,
   imageUrl,
   orientation = 'textLeft',
+  children,
 }: Props) {
   return (
     <section
@@ -30,11 +30,9 @@ export default function Feature({
         })}
       >
         <h2 className="text-2xl font-bold">{title}</h2>
-        {paragraphs.map((paragraph, index) => (
-          <p key={index} className="basis-1/2 font-[Poppins]">
-            {paragraph}
-          </p>
-        ))}
+        <div className="[&>*]:basis-1/2 [&>*]:font-[Poppins] space-y-4">
+          {children}
+        </div>
       </div>
       <img
         className={classnames('basis-1/2 w-full md:w-1/2 object-contain', {

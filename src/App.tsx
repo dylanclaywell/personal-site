@@ -3,12 +3,11 @@ import { useLocation, useOutlet, Location } from 'react-router-dom'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
 
 import colors from './colors'
-import { ModalProvider } from './contexts/ModalContext'
 
 const animationMapping = {
   '/about-me': 'top-page',
   '/': 'center-page',
-  '/work': 'bottom-page',
+  '/my-work': 'bottom-page',
 }
 
 function getAnimationClass(location: Location) {
@@ -33,18 +32,16 @@ export default function App() {
   }, [])
 
   return (
-    <ModalProvider>
-      <SwitchTransition>
-        <CSSTransition
-          key={location.pathname}
-          nodeRef={ref}
-          timeout={300}
-          classNames={getAnimationClass(location)}
-          unmountOnExit
-        >
-          <div ref={ref}>{outlet}</div>
-        </CSSTransition>
-      </SwitchTransition>
-    </ModalProvider>
+    <SwitchTransition>
+      <CSSTransition
+        key={location.pathname}
+        nodeRef={ref}
+        timeout={300}
+        classNames={getAnimationClass(location)}
+        unmountOnExit
+      >
+        <div ref={ref}>{outlet}</div>
+      </CSSTransition>
+    </SwitchTransition>
   )
 }
