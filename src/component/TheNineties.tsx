@@ -100,7 +100,7 @@ function TheNinties() {
   })
 
   return (
-    <div className="pointer-events-none absolute top-0 bottom-0 left-0 right-0 overflow-hidden opacity-50">
+    <div className="pointer-events-none fixed top-0 bottom-0 left-0 right-0 overflow-hidden opacity-50">
       {circles}
       {triangles}
       {zigzags}
