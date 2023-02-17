@@ -8,6 +8,8 @@ function clamp(num: number, min: number, max: number) {
   return Math.min(Math.max(num, min), max)
 }
 
+const maxImageVw = 30
+const minImageVw = 10
 const defaultPixelSize = 16
 
 export function Home() {
@@ -34,40 +36,24 @@ export function Home() {
     if (!image || !hero) return
 
     const deltaY = position - lastPosition.current
-    const widthSpeed = deltaY / 10
-    const translateSpeed = deltaY / 4
 
+    const widthSpeed = deltaY / (maxImageVw - minImageVw)
     const newWidth = Number(image.style.width.split('vw')[0]) - widthSpeed
-
-    const translateAmount =
-      image.style.transform.split('translateX(')?.[1] ?? '0vw'
-    const newTranslateAmount =
-      Number(translateAmount.split('vw')[0]) - translateSpeed
 
     const direction = deltaY > 0 ? 'down' : 'up'
 
     if (
       direction === 'down' &&
-      position > image.offsetHeight - hero.offsetHeight - defaultPixelSize
+      position > hero.offsetTop - image.offsetHeight - defaultPixelSize
     ) {
-      image.style.width = `${clamp(newWidth, 10, 30)}vw`
-      image.style.transform = `translateX(${clamp(
-        newTranslateAmount,
-        -44,
-        0
-      )}vw)`
+      image.style.width = `${clamp(newWidth, minImageVw, maxImageVw)}vw`
     }
 
     if (
       direction === 'up' &&
-      position < image.offsetHeight + hero.offsetHeight + defaultPixelSize
+      position < hero.offsetTop + image.offsetHeight + defaultPixelSize
     ) {
-      image.style.width = `${clamp(newWidth, 10, 30)}vw`
-      image.style.transform = `translateX(${clamp(
-        newTranslateAmount,
-        -45,
-        0
-      )}vw)`
+      image.style.width = `${clamp(newWidth, minImageVw, maxImageVw)}vw`
     }
 
     if (position > hero.offsetTop + hero.offsetHeight) {
@@ -83,7 +69,6 @@ export function Home() {
 
     if (position === 0) {
       image.style.width = '30vw'
-      image.style.transform = 'translateX(0vw)'
     }
 
     lastPosition.current = position
@@ -93,11 +78,12 @@ export function Home() {
     <main>
       <TheNineties />
       <div className="text-center h-screen flex flex-col justify-center items-center relative z-10">
-        <img
+        <div
           ref={imageRef}
-          className="transition-all duration-100 ease-linear sticky top-0 min-w-[10vw] max-w-[30vw] object-contain"
-          src="me.svg"
-        />
+          className="absolute origin-top-left transition-all duration-100 ease-linear top-4 w-[30vw] min-w-[5rem] max-w-lg object-contain"
+        >
+          <img src="me.svg" />
+        </div>
         <h1 ref={heroRef} className="text-[10vw] w-fit space-x-[2vw]">
           <span
             key={greeting}
