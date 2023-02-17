@@ -65,7 +65,7 @@ export function Home() {
       image.style.width = `${clamp(newWidth, 10, 30)}vw`
       image.style.transform = `translateX(${clamp(
         newTranslateAmount,
-        -44,
+        -45,
         0
       )}vw)`
     }
@@ -81,6 +81,11 @@ export function Home() {
       image.style.left = 'auto'
     }
 
+    if (position === 0) {
+      image.style.width = '30vw'
+      image.style.transform = 'translateX(0vw)'
+    }
+
     lastPosition.current = position
   })
 
@@ -90,7 +95,7 @@ export function Home() {
       <div className="text-center h-screen flex flex-col justify-center items-center relative z-10">
         <img
           ref={imageRef}
-          className="transition-all duration-100 ease-linear sticky top-0 min-w-[10vw] w-[calc(100%_-_70vw)] object-contain"
+          className="transition-all duration-100 ease-linear sticky top-0 min-w-[10vw] max-w-[30vw] object-contain"
           src="me.svg"
         />
         <h1 ref={heroRef} className="text-[10vw] w-fit space-x-[2vw]">
