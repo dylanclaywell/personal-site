@@ -12,10 +12,7 @@ export function Feature({ id, title, children, color }: Props) {
   return (
     <section
       id={id}
-      className={classnames(
-        'max-w-xl m-auto h-screen flex flex-col justify-center items-center',
-        {}
-      )}
+      className="max-w-xl m-auto h-screen flex flex-col justify-center items-center"
     >
       <h1
         className={classnames(
@@ -28,7 +25,7 @@ export function Feature({ id, title, children, color }: Props) {
       >
         {title}
       </h1>
-      <div className="pt-16 px-4 pb-8 rounded-xl bg-white border-2 border-black space-y-4">
+      <div className="pt-16 px-4 mx-4 pb-8 rounded-xl bg-white border-2 border-black space-y-4">
         {children}
       </div>
     </section>
