@@ -58,44 +58,10 @@ body {
   animation-iteration-count: 2;
 }
 
-.top-page {
-  position: relative;
-}
-
-.top-page-enter {
-  transform: translateY(-100%);
-  position: absolute;
-}
-
-.top-page-enter-active {
-  transform: translateY(0);
-  transition: transform 300ms;
-}
-
-.top-page-exit {
-}
-
-.top-page-exit-active {
-  transform: translateY(-100%);
-  transition: transform 300ms;
-}
-
-.center-page-exit-active {
-  transform: translateY(100%);
-  transition: transform 300ms;
-}
-
-.center-page-enter-done {
-  transform: translateY(0);
-}
-
-.center-page-enter {
-  transform: translateY(100%);
-}
-
-.center-page-enter-active {
-  transform: translateY(0%);
-  transition: transform 300ms;
+.swap {
+  animation-name: swap;
+  animation-duration: 750ms;
+  animation-timing-function: ease-in-out;
 }
 
 @keyframes slidein-right {
@@ -141,5 +107,25 @@ body {
 
   100% {
     transform: rotate(0deg);
+  }
+}
+
+@keyframes swap {
+  0% {
+    z-index: 0;
+  }
+
+  49% {
+    z-index: 0;
+  }
+
+  50% {
+    transform: translateX(100%);
+    z-index: 1000;
+  }
+
+  100% {
+    transform: translateX(0%);
+    z-index: 1000;
   }
 }

@@ -28,7 +28,7 @@ export function Feature({ id, title, children, color }: Props) {
       >
         {title}
       </h1>
-      <div className="pt-16 px-4 pb-8 rounded-xl bg-white border-2 border-black">
+      <div className="pt-16 px-4 pb-8 rounded-xl bg-white border-2 border-black space-y-4">
         {children}
       </div>
     </section>

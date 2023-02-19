@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 module.exports = {
-  'light-blue': '#80d6ff',
+  'light-blue': '#cadff5',
   blue: '#42a5f5',
   'dark-blue': '#0077c2',
   'light-red': '#ff7961',
