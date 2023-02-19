@@ -8,50 +8,38 @@ const numberOfCircles = 6
 const numberOfTriangles = 6
 const numberOfZigzags = 6
 
-function TheNintiesBase() {
-  const circlesToRender = Array.from({ length: numberOfCircles }).reduce<
+const minDistanceApart = 5
+
+function generateShapePositions(numberOfShapes: number, minDistance: number) {
+  return Array.from({ length: numberOfShapes }).reduce<
     { top: number; left: number }[]
   >((acc, val, i) => {
-    const top = random(i * (100 / 6), (i + 1) * (100 / 6))
+    const top = random(
+      i * (100 / numberOfShapes),
+      (i + 1) * (100 / numberOfShapes)
+    )
     let left = random(0, 100)
 
-    while (acc.some((v) => v.left <= left + 5 && v.left >= left - 5)) {
+    while (
+      acc.some(
+        (v) => v.left <= left + minDistance && v.left >= left - minDistance
+      )
+    ) {
       left = random(0, 100)
     }
 
     return [...acc, { top, left }]
   }, [])
+}
 
-  const trianglesToRender = Array.from({ length: numberOfTriangles }).reduce<
-    { top: number; left: number }[]
-  >((acc, val, i) => {
-    const top = random(i * (100 / 6), (i + 1) * (100 / 6))
-    let left = random(0, 100)
-
-    while (acc.some((v) => v.left <= left + 5 && v.left >= left - 5)) {
-      left = random(0, 100)
-    }
-
-    return [...acc, { top, left }]
-  }, [])
-
-  const zigzagsToRender = Array.from({ length: numberOfZigzags }).reduce<
-    { top: number; left: number }[]
-  >((acc, val, i) => {
-    const top = random(i * (100 / 6), (i + 1) * (100 / 6))
-    let left = random(0, 100)
-
-    while (acc.some((v) => v.left <= left + 5 && v.left >= left - 5)) {
-      left = random(0, 100)
-    }
-
-    return [...acc, { top, left }]
-  }, [])
-
-  const circles = circlesToRender.map((c, i) => {
+function renderShapes(
+  name: string,
+  positions: { top: number; left: number }[]
+) {
+  return positions.map((c, i) => {
     return (
       <div
-        key={`circle-${i}`}
+        key={`${name}-${i}`}
         className="absolute"
         style={{
           top: `${c.top}vh`,
@@ -60,47 +48,34 @@ function TheNintiesBase() {
           transform: `rotate(${random(0, 360)}deg)`,
         }}
       >
-        <img src="circle.svg" />
+        <img src={`${name}.svg`} />
       </div>
     )
   })
+}
 
-  const triangles = trianglesToRender.map((t, i) => {
-    return (
-      <div
-        key={`triangle-${i}`}
-        className="absolute"
-        style={{
-          top: `${t.top}vh`,
-          left: `${t.left}vw`,
-          width: random(10, 20) + 'vw',
-          transform: `rotate(${random(0, 360)}deg)`,
-        }}
-      >
-        <img src="triangle.svg" />
-      </div>
-    )
-  })
+function TheNintiesBase() {
+  const circlesToRender = generateShapePositions(
+    numberOfCircles,
+    minDistanceApart
+  )
 
-  const zigzags = zigzagsToRender.map((z, i) => {
-    return (
-      <div
-        key={`zigzag-${i}`}
-        className="absolute"
-        style={{
-          top: `${z.top}vh`,
-          left: `${z.left}vw`,
-          width: random(10, 20) + 'vw',
-          transform: `rotate(${random(0, 360)}deg)`,
-        }}
-      >
-        <img src="zigzag.svg" />
-      </div>
-    )
-  })
+  const trianglesToRender = generateShapePositions(
+    numberOfTriangles,
+    minDistanceApart
+  )
+
+  const zigzagsToRender = generateShapePositions(
+    numberOfZigzags,
+    minDistanceApart
+  )
+
+  const circles = renderShapes('circle', circlesToRender)
+  const triangles = renderShapes('triangle', trianglesToRender)
+  const zigzags = renderShapes('zigzag', zigzagsToRender)
 
   return (
-    <div className="pointer-events-none fixed top-0 bottom-0 left-0 right-0 overflow-hidden opacity-50">
+    <div className="-z-10 pointer-events-none fixed top-0 bottom-0 left-0 right-0 overflow-hidden opacity-50">
       {circles}
       {triangles}
       {zigzags}
