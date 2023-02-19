@@ -77,9 +77,9 @@ export function Hero() {
     <div className="text-center h-screen flex flex-col justify-center items-center z-10">
       <div
         ref={imageRef}
-        className="absolute origin-top-left top-4 w-[30vw] min-w-[5rem] max-w-lg object-contain"
+        className="absolute origin-top-left top-4 w-[30vw] min-w-[5rem] max-w-lg object-contain z-50"
       >
-        <img src="me.svg" />
+        <img src="me.svg" className="w-full" />
       </div>
       <h1 ref={heroRef} className="text-[10vw] w-fit space-x-[2vw]">
         <span
