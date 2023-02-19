@@ -10,6 +10,9 @@ const numberOfZigzags = 6
 
 const minDistanceApart = 5
 
+const minWidth = 10
+const maxWidth = 20
+
 function generateShapePositions(numberOfShapes: number, minDistance: number) {
   return Array.from({ length: numberOfShapes }).reduce<
     { top: number; left: number }[]
@@ -44,7 +47,7 @@ function renderShapes(
         style={{
           top: `${c.top}vh`,
           left: `${c.left}vw`,
-          width: random(10, 20) + 'vw',
+          width: random(minWidth, maxWidth) + 'vw',
           transform: `rotate(${random(0, 360)}deg)`,
         }}
       >
