@@ -1,7 +1,11 @@
 /* eslint-disable no-undef */
 module.exports = {
-  'light-blue': '#0cb5f2',
-  blue: '#0ba2d9',
+  'light-blue': '#80d6ff',
+  blue: '#42a5f5',
+  'dark-blue': '#0077c2',
+  'light-red': '#ff7961',
+  red: '#f44336',
+  'dark-red': '#ba000d',
   white: '#fff',
   black: '#000',
   'gray-50': '#FAFAFA',

@@ -5,7 +5,6 @@ export function useScroll(callback: (position: number) => void) {
   const stop = useRef<boolean>(false)
 
   useEffect(function handleScroll() {
-    console.log(scrollPosition)
     scrollPosition.current = -1
     stop.current = false
     const animate = () => {

@@ -8,7 +8,7 @@ const numberOfCircles = 6
 const numberOfTriangles = 6
 const numberOfZigzags = 6
 
-function TheNinties() {
+function TheNintiesBase() {
   const circlesToRender = Array.from({ length: numberOfCircles }).reduce<
     { top: number; left: number }[]
   >((acc, val, i) => {
@@ -108,4 +108,4 @@ function TheNinties() {
   )
 }
 
-export default React.memo(TheNinties)
+export const TheNineties = React.memo(TheNintiesBase)

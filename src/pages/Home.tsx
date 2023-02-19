@@ -1,109 +1,46 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React from 'react'
 
-import { randomGreeting } from '../greetings'
-import TheNineties from '../component/TheNineties'
-import { useScroll } from '../hooks/useScroll'
-
-function clamp(num: number, min: number, max: number) {
-  return Math.min(Math.max(num, min), max)
-}
-
-const maxImageVw = 30
-const minImageVw = 10
-const defaultPixelSize = 16
+import { TheNineties } from '../components/TheNineties'
+import { Feature } from '../components/Feature'
+import { NavBar } from '../components/NavBar'
+import { Hero } from '../components/Hero'
+import { useSmoothScrolling } from '../hooks/useSmoothScrolling'
 
 export function Home() {
-  const lastPosition = useRef<number>(0)
-  const imageRef = useRef<HTMLImageElement>(null)
-  const heroRef = useRef<HTMLDivElement>(null)
-  const [greeting, setGreeting] = useState('')
-
-  useEffect(function generateGreeting() {
-    setGreeting(randomGreeting())
-
-    const interval = setInterval(() => {
-      setGreeting(randomGreeting())
-    }, 2000)
-
-    return function cleanup() {
-      clearInterval(interval)
-    }
-  }, [])
-
-  useScroll(function handleScroll(position: number) {
-    const image = imageRef.current
-    const hero = heroRef.current
-    if (!image || !hero) return
-
-    const deltaY = position - lastPosition.current
-
-    const widthSpeed = deltaY / (maxImageVw - minImageVw)
-    const newWidth = Number(image.style.width.split('vw')[0]) - widthSpeed
-
-    const direction = deltaY > 0 ? 'down' : 'up'
-
-    if (
-      direction === 'down' &&
-      position > hero.offsetTop - image.offsetHeight - defaultPixelSize
-    ) {
-      image.style.width = `${clamp(newWidth, minImageVw, maxImageVw)}vw`
-    }
-
-    if (
-      direction === 'up' &&
-      position < hero.offsetTop + image.offsetHeight + defaultPixelSize
-    ) {
-      image.style.width = `${clamp(newWidth, minImageVw, maxImageVw)}vw`
-    }
-
-    if (position > hero.offsetTop + hero.offsetHeight) {
-      image.style.position = 'fixed'
-      image.style.top = '1rem'
-    }
-
-    if (position < hero.offsetTop) {
-      image.style.position = 'sticky'
-      image.style.top = '1rem'
-      image.style.left = 'auto'
-    }
-
-    if (position === 0) {
-      image.style.width = '30vw'
-    }
-
-    lastPosition.current = position
-  })
+  useSmoothScrolling()
 
   return (
     <main>
       <TheNineties />
-      <div className="text-center h-screen flex flex-col justify-center items-center relative z-10">
-        <div
-          ref={imageRef}
-          className="absolute origin-top-left transition-all duration-100 ease-linear top-4 w-[30vw] min-w-[5rem] max-w-lg object-contain"
-        >
-          <img src="me.svg" />
-        </div>
-        <h1 ref={heroRef} className="text-[10vw] w-fit space-x-[2vw]">
-          <span
-            key={greeting}
-            className="slidein-right inline-block font-lighter"
-          >
-            {greeting}
-          </span>
-          <span className="wave inline-block before:pt-[100%]">👋</span>
-        </h1>
-        <p className="font-[Poppins] w-fit">
-          My name is{' '}
-          <button
-            className="text-blue hover:text-light-blue"
-            onClick={() => undefined}
-          >
-            Dylan Claywell
-          </button>
+      <NavBar />
+      <Hero />
+      <Feature color="blue" id="about-me" title="Who am I?">
+        <p className="font-light">
+          I&apos;m a software engineer by trade, and a creator by passion. I
+          love making something new with my own two hands, from games to web
+          applications.
         </p>
-      </div>
-      <div className="h-screen"></div>
+        <p className="font-light">
+          I love React and Typescript, and I&apos;m passionate about making
+          interfaces that are easy to use, look great, and are written with with
+          clean code in the process.
+        </p>
+      </Feature>
+      <Feature color="red" id="my-work" title="What am I working on?">
+        <p>
+          This website is written in React 18 and Typescript, and is styled
+          using Tailwind CSS. It&apos;s hosted on Google Cloud Platform using
+          App Engine.
+        </p>
+        <p>
+          I&apos;ve also been working with Solid JS, a library with inspiration
+          from React and Preact, and Tauri to make desktop applications.
+        </p>
+        <p>
+          In my spare time I&apos;ve been working on a game using Tauri and
+          Phaser, so stay tuned!
+        </p>
+      </Feature>
     </main>
   )
 }
