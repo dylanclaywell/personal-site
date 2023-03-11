@@ -16,7 +16,7 @@ export function Feature({ id, title, children, color }: Props) {
     >
       <h1
         className={classnames(
-          'rounded-full px-8 py-4 border-2 border-black -mb-8 z-10 text-4xl',
+          'rounded-full px-8 py-4 border-2 border-black -mb-8 z-10 text-4xl mx-4',
           {
             'bg-blue': color === 'blue',
             'bg-red': color === 'red',

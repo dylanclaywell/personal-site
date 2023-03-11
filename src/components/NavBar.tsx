@@ -19,7 +19,7 @@ export function NavBar() {
   )
 
   return (
-    <nav className="fixed top-4 w-full px-4 space-y-4 md:space-y-0 z-50">
+    <nav className="fixed top-4 w-fit md:w-full px-4 space-y-4 md:space-y-0 z-50">
       <button
         onClick={() => (isOpen ? setShouldExit(true) : setIsOpen(true))}
         className="md:hidden rounded-full border-2 border-black w-10 h-10 flex justify-center items-center bg-white z-20 relative"

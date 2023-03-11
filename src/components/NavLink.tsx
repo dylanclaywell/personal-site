@@ -26,6 +26,11 @@ export function NavLink({
   onAnimationEnd,
 }: Props) {
   const nodeRef = useRef<HTMLAnchorElement>(null)
+  const classNames = `
+    transition-colors rounded-full border-2 border-black font-[Poppins] 
+    px-8 py-4 max-w-[10rem] flex justify-center translate-x-[-120%] 
+    md:translate-x-0
+  `
 
   function onClick(event: React.MouseEvent<HTMLAnchorElement>) {
     event.preventDefault()
@@ -44,24 +49,35 @@ export function NavLink({
       classNames="nav-link"
       onExited={() => onAnimationEnd?.()}
     >
-      <a
-        ref={nodeRef}
-        className={classnames(
-          'transition-colors rounded-full border-2 border-black font-[Poppins] px-8 py-4 max-w-[10rem] flex justify-center translate-x-[-120%] md:translate-x-0',
-          {
-            'bg-blue hover:bg-light-blue': color === 'blue',
-            'bg-red hover:bg-light-red': color === 'red',
-          },
-          classes
-        )}
-        href={href}
-        onClick={onClick}
-        style={{
-          transitionDelay: animationDelay ? `${animationDelay}ms` : '',
-        }}
-      >
-        {children}
-      </a>
+      <div className="relative">
+        <div
+          aria-hidden="true"
+          className={classnames(`${classNames} absolute top-[0.5rem] left-0`, {
+            'bg-dark-blue': color === 'blue',
+            'bg-dark-red': color === 'red',
+          })}
+        >
+          {children}
+        </div>
+        <a
+          ref={nodeRef}
+          className={classnames(
+            `${classNames} md:active:translate-y-[0.5rem]`,
+            {
+              'bg-blue hover:bg-light-blue': color === 'blue',
+              'bg-red hover:bg-light-red': color === 'red',
+            },
+            classes
+          )}
+          href={href}
+          onClick={onClick}
+          style={{
+            transitionDelay: animationDelay ? `${animationDelay}ms` : '',
+          }}
+        >
+          {children}
+        </a>
+      </div>
     </CSSTransition>
   )
 }
