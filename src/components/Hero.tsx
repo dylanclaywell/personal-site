@@ -96,8 +96,6 @@ export function Hero() {
     lastPosition.current = position
   })
 
-  console.log(images)
-
   return (
     <div className="text-center h-screen flex flex-col justify-center items-center">
       <a
