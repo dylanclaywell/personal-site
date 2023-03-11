@@ -64,6 +64,12 @@ body {
   animation-timing-function: ease-in-out;
 }
 
+.bounce-in-right {
+  animation-name: bounce-in-right;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
+}
+
 @keyframes slidein-right {
   0% {
     opacity: 0;
@@ -128,4 +134,24 @@ body {
     transform: translateX(0%);
     z-index: 1000;
   }
+}
+
+.nav-link-enter {
+  transform: translateX(-120%);
+}
+.nav-link-enter-active {
+  transform: translateX(0%);
+  transition: transform 300ms;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.nav-link-enter-done {
+  transform: translateX(0%);
+}
+.nav-link-exit {
+  transform: translateX(0);
+}
+.nav-link-exit-active {
+  transform: translateX(-120%);
+  transition: transform 300ms;
+  transition-timing-function: ease-in-out;
 }

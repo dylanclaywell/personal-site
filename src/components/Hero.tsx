@@ -106,7 +106,7 @@ export function Hero() {
         }}
         href="/"
         ref={imageRef}
-        className="absolute top-4 min-h-[5rem] min-w-[5rem] max-w-lg max-h-[32rem] z-50"
+        className="absolute top-4 min-h-[5rem] min-w-[5rem] max-w-lg max-h-[32rem] z-40"
         aria-label="Back to home"
       >
         {images

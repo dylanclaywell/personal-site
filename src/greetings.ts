@@ -7,18 +7,6 @@ const greetings = [
   'Greetings',
   'Salutations',
   'Welcome',
-  'Bonjour',
-  'Hola',
-  'Ciao',
-  'Aloha',
-  'Konnichiwa',
-  'Namaste',
-  'Salaam',
-  'Shalom',
-  'Ni hao',
-  'Sawubona',
-  'Hallo',
-  'Hej',
 ]
 
 export function randomGreeting() {

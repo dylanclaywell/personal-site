@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const colors = require('./src/colors')
+const screens = require('./src/screens')
 
 /** @type {import('tailwindcss/tailwind-config').TailwindConfig} */
 module.exports = {
@@ -9,6 +10,7 @@ module.exports = {
     extend: {
       colors,
     },
+    screens,
   },
   plugins: [],
 }
