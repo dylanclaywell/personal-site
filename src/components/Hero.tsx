@@ -15,10 +15,10 @@ const defaultPixelSize = 16
 export function Hero() {
   const [shouldPeekImages, setShouldPeekImages] = useState(false)
   const [shouldSwitchImages, setShouldSwitchImages] = useState(false)
-  const [images, setImages] = useState<('default' | 'focused' | 'test')[]>([
+  const [images, setImages] = useState<('default' | 'focused' | 'dog')[]>([
     'default',
     'focused',
-    'test',
+    'dog',
   ])
   const lastPosition = useRef<number>(0)
   const imageRef = useRef<HTMLAnchorElement>(null)
