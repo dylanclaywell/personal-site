@@ -136,22 +136,38 @@ body {
   }
 }
 
-.nav-link-enter {
+.nav-link-mobile-enter {
   transform: translateX(-120%);
 }
-.nav-link-enter-active {
+.nav-link-mobile-enter-active {
   transform: translateX(0%);
   transition: transform 300ms;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.nav-link-enter-done {
+.nav-link-mobile-enter-done {
   transform: translateX(0%);
 }
-.nav-link-exit {
+.nav-link-mobile-exit {
   transform: translateX(0);
 }
-.nav-link-exit-active {
+.nav-link-mobile-exit-active {
   transform: translateX(-120%);
   transition: transform 300ms;
   transition-timing-function: ease-in-out;
+}
+
+.nav-link {
+  animation-name: drop-down;
+  animation-duration: 300ms;
+  animation-timing-function: cubic-bezier(0.33, 0.98, 0.57, 1.42);
+}
+
+@keyframes drop-down {
+  0% {
+    transform: translateY(-150%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
 }

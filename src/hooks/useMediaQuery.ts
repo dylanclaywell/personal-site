@@ -13,10 +13,6 @@ export function useMediaQuery(breakpoint: Breakpoint) {
   useEffect(
     function registerEventListener() {
       function onResize() {
-        console.log(
-          `(min-width: ${screens[breakpoint]}px)`,
-          window.matchMedia(mediaQuery).matches
-        )
         setMatchesBreakpoint(window.matchMedia(mediaQuery).matches)
       }
 

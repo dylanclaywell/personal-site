@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { NavLink } from './NavLink'
+import { NavLink } from './NavLink/NavLink'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import classnames from 'classnames'
 
@@ -19,7 +19,7 @@ export function NavBar() {
   )
 
   return (
-    <nav className="fixed top-4 w-fit md:w-full px-4 space-y-4 md:space-y-0 z-50">
+    <nav className="fixed top-4 w-fit md:w-full px-4 space-y-4 md:space-y-0 z-50 md:z-0">
       <button
         onClick={() => (isOpen ? setShouldExit(true) : setIsOpen(true))}
         className="md:hidden rounded-full border-2 border-black w-10 h-10 flex justify-center items-center bg-white z-20 relative"
@@ -37,7 +37,7 @@ export function NavBar() {
           color="blue"
           isOpen={isOpen}
           shouldExit={shouldExit}
-          transitionDelay={100}
+          transitionDelay={0}
         >
           About Me
         </NavLink>
@@ -45,7 +45,7 @@ export function NavBar() {
           href="/#my-work"
           color="red"
           isOpen={isOpen}
-          transitionDelay={200}
+          transitionDelay={100}
           onAnimationEnd={() => {
             if (shouldExit) {
               setShouldExit(false)
