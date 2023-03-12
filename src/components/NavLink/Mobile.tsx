@@ -30,8 +30,8 @@ export function Mobile({
           ref={nodeRef}
           className={classnames(
             `
-              rounded-full border-2 border-black font-[Poppins] 
-              px-8 py-4 max-w-[10rem] flex justify-center
+              transition-colors rounded-full border-2 border-black font-[Poppins] 
+              px-8 py-4 max-w-[10rem] flex justify-center translate-x-[-120%]
             `,
             {
               'bg-blue hover:bg-light-blue': color === 'blue',
