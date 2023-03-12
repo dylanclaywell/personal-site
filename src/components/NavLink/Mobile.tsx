@@ -14,6 +14,7 @@ export function Mobile({
   isOpen,
   shouldExit,
   onAnimationEnd,
+  onClick: onClickProp,
 }: Props) {
   const nodeRef = useRef<HTMLAnchorElement>(null)
 
@@ -40,7 +41,10 @@ export function Mobile({
             classes
           )}
           href={href}
-          onClick={onClick}
+          onClick={(event) => {
+            onClick(event)
+            onClickProp()
+          }}
           style={{
             transitionDelay: transitionDelay ? `${transitionDelay}ms` : '',
           }}

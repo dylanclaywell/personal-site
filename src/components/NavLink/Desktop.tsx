@@ -11,6 +11,7 @@ export function Desktop({
   color,
   transitionDelay,
   classes,
+  onClick: onClickProp,
 }: Props) {
   const classNames = `
     transition-colors rounded-full border-2 border-black font-[Poppins] 
@@ -44,7 +45,10 @@ export function Desktop({
           classes
         )}
         href={href}
-        onClick={onClick}
+        onClick={(event) => {
+          onClick(event)
+          onClickProp()
+        }}
         style={{
           transitionDelay: transitionDelay ? `${transitionDelay}ms` : '',
         }}

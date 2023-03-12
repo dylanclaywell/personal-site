@@ -13,6 +13,7 @@ export interface Props {
   isOpen: boolean
   shouldExit: boolean
   onAnimationEnd?: () => void
+  onClick: () => void
 }
 
 export function NavLink(args: Props) {
