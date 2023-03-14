@@ -34,3 +34,7 @@ Runs Prettier on all of the applicable files in the project for consistent code 
 ### `yarn lint`
 
 Runs ESLint on all of the applicable files in the project for quality control.
+
+### Links
+
+You can find me on [LinkedIn](https://www.linkedin.com/in/dylan-claywell/)
