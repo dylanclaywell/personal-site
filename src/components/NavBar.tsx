@@ -33,9 +33,9 @@ export function NavBar() {
       <nav className="fixed top-4 w-fit md:w-full px-4 space-y-4 md:space-y-0 z-50 md:z-0">
         <button
           onClick={() => (isOpen ? setShouldExit(true) : setIsOpen(true))}
-          className="md:hidden rounded-full border-2 border-black w-10 h-10 flex justify-center items-center bg-white z-20 relative"
+          className="md:hidden rounded-full w-10 h-10 flex justify-center items-center z-20 relative"
         >
-          <i className="fa-solid fa-bars text-2xl"></i>
+          <img width={20} height={20} src="menu.svg" alt="Menu" />
         </button>
         <div
           aria-hidden={!isMediumScreen && !isOpen}
