@@ -40,6 +40,8 @@ function renderShapes(
   positions: { top: number; left: number }[]
 ) {
   return positions.map((c, i) => {
+    const width = random(minWidth, maxWidth)
+
     return (
       <div
         key={`${name}-${i}`}
@@ -47,7 +49,7 @@ function renderShapes(
         style={{
           top: `${c.top}vh`,
           left: `${c.left}vw`,
-          width: random(minWidth, maxWidth) + 'vw',
+          width: `${width}vw`,
           transform: `rotate(${random(0, 360)}deg)`,
         }}
       >
@@ -78,7 +80,10 @@ function TheNintiesBase() {
   const zigzags = renderShapes('zigzag', zigzagsToRender)
 
   return (
-    <div className="-z-10 pointer-events-none fixed top-0 bottom-0 left-0 right-0 overflow-hidden opacity-50">
+    <div
+      aria-hidden="true"
+      className="-z-10 pointer-events-none fixed top-0 bottom-0 left-0 right-0 overflow-hidden opacity-50"
+    >
       {circles}
       {triangles}
       {zigzags}

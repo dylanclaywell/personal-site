@@ -168,7 +168,7 @@ export function Hero() {
       <p className="font-[Poppins] w-fit">
         My name is{' '}
         <button
-          className="text-blue hover:text-light-blue"
+          className="text-dark-blue hover:text-blue"
           onClick={() => setShouldSwitchImages(true)}
           onMouseOver={() => setShouldPeekImages(true)}
           onMouseOut={() => setShouldPeekImages(false)}

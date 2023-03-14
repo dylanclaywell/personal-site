@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
 import classnames from 'classnames'
-import { CSSTransition } from 'react-transition-group'
 
 import { Props } from './NavLink'
 import { onClick } from './onClick'
